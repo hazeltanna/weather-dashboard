@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weather Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <header>
+    <h1>Weather Dashboard</h1>
+
+    <form id="search-form">
+      <label for="city-input">Search city</label>
+      <input
+        type="text"
+        id="city-input"
+        placeholder="e.g. Mumbai, London..."
+        autocomplete="off"
+      />
+      <button type="submit">Search</button>
+    </form>
+  </header>
+
+  <main>
+
+    <section id="status-section" aria-live="polite">
+      <!-- loading / error messages will appear here -->
+    </section>
+
+    <section id="current-weather" hidden>
+      <!-- current weather will be injected here by JS -->
+    </section>
+
+    <section id="forecast" hidden>
+      <h2>5-Day Forecast</h2>
+      <div id="forecast-grid">
+        <!-- forecast cards will be injected here by JS -->
+      </div>
+    </section>
+
+  </main>
+
+  <template id="forecast-card-template">
+    <div class="forecast-card">
+      <p class="forecast-day"></p>
+      <img class="forecast-icon" src="" alt="" />
+      <p class="forecast-temp"></p>
+    </div>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,220 @@
+/* ---------- Design tokens (CSS custom properties) ---------- */
+:root {
+  --paper: #FAF6ED;
+  --ink: #2B2420;
+  --ink-soft: #6B6255;
+  --amber: #C7872E;
+  --slate: #2F5D62;
+  --hairline: #DCD2C0;
+
+  --font-serif: "Fraunces", Georgia, serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+}
+
+/* ---------- Reset ---------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  line-height: 1.5;
+  padding: var(--space-lg) var(--space-md);
+  max-width: 900px;
+  margin-inline: auto;
+}
+
+h1, h2 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+}
+header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-md);
+  padding-bottom: var(--space-lg);
+  margin-bottom: var(--space-lg);
+  border-bottom: 1px solid var(--hairline);
+}
+ 
+header h1 {
+  font-size: 1.75rem;
+}
+ 
+#search-form {
+  display: flex;
+  gap: var(--space-sm);
+}
+ 
+#search-form label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+ 
+#city-input {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  padding: 0.6rem 1rem;
+  border: 1px solid var(--hairline);
+  border-radius: 4px;
+  background: #fff;
+  color: var(--ink);
+  min-width: 220px;
+}
+ 
+#city-input:focus {
+  outline: none;
+  border-color: var(--amber);
+}
+ 
+#search-form button {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 4px;
+  background: var(--amber);
+  color: var(--paper);
+  cursor: pointer;
+  transition: opacity 0.15s ease;
+}
+ 
+#search-form button:hover {
+  opacity: 0.85;
+}
+#status-section {
+  padding: var(--space-md) 0;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+ 
+#status-section.error {
+  color: #a33b2b;
+  font-style: normal;
+  font-weight: 500;
+}
+ 
+
+#current-weather {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-lg);
+  padding: var(--space-lg) 0;
+  border-bottom: 1px solid var(--hairline);
+  margin-bottom: var(--space-lg);
+}
+ 
+.cw-main {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+ 
+.cw-city {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+}
+ 
+.cw-date {
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+ 
+.cw-temp {
+  font-family: var(--font-serif);
+  font-size: 4rem;
+  line-height: 1;
+}
+ 
+.cw-icon {
+  width: 72px;
+  height: 72px;
+}
+ 
+.cw-metrics {
+  display: flex;
+  gap: var(--space-lg);
+  margin-left: auto;
+}
+ 
+.cw-metric-label {
+  font-size: 0.75rem;
+  color: var(--ink-soft);
+}
+ 
+.cw-metric-value {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+ 
+
+#forecast-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--space-md);
+  margin-top: var(--space-md);
+}
+ 
+.forecast-card {
+  text-align: center;
+  padding: var(--space-md) var(--space-sm);
+  border-right: 1px solid var(--hairline);
+}
+ 
+.forecast-card:last-child {
+  border-right: none;
+}
+ 
+.forecast-day {
+  font-weight: 500;
+  margin-bottom: var(--space-sm);
+}
+ 
+.forecast-icon {
+  width: 40px;
+  height: 40px;
+  margin-bottom: var(--space-sm);
+}
+ 
+.forecast-temp {
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+ 
+
+@media (max-width: 600px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+ 
+  .cw-metrics {
+    margin-left: 0;
+    width: 100%;
+    justify-content: space-between;
+  }
+ 
+  #forecast-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+ 
+  .forecast-card:nth-child(2n) {
+    border-right: none;
+  }
+}
