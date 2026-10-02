@@ -11,6 +11,11 @@
 </head>
 <body>
 
+  <div id="weather-bg" aria-hidden="true">
+    <div class="bg-cloud cloud1"></div>
+    <div class="bg-cloud cloud2"></div>
+  </div>
+
   <header>
     <h1>Weather Dashboard</h1>
 
@@ -24,7 +29,14 @@
       />
       <button type="submit">Search</button>
     </form>
+
+    <div class="header-actions">
+      <button type="button" id="unit-toggle">Switch to °F</button>
+      <button type="button" id="geo-button">📍 My Location</button>
+    </div>
   </header>
+
+  <div id="recent-searches" aria-label="Recent searches"></div>
 
   <main>
 
@@ -35,6 +47,10 @@
     <section id="current-weather" hidden>
       <!-- current weather will be injected here by JS -->
     </section>
+
+    <div id="hourly-strip" class="hourly-strip" hidden>
+      <!-- next-8-hours strip injected here by JS -->
+    </div>
 
     <section id="forecast" hidden>
       <h2>5-Day Forecast</h2>
@@ -48,7 +64,7 @@
   <template id="forecast-card-template">
     <div class="forecast-card">
       <p class="forecast-day"></p>
-      <img class="forecast-icon" src="" alt="" />
+      <p class="forecast-icon"></p>
       <p class="forecast-temp"></p>
     </div>
   </template>
