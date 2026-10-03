@@ -2,70 +2,66 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Weather Dashboard</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
-  <div id="weather-bg" aria-hidden="true">
-    <div class="bg-cloud cloud1"></div>
-    <div class="bg-cloud cloud2"></div>
-  </div>
+  <div id="weather-sky" aria-hidden="true"></div>
+  <canvas id="weather-canvas" aria-hidden="true"></canvas>
+  <div id="weather-flash" aria-hidden="true"></div>
+  <div id="grain" aria-hidden="true"></div>
 
-  <header>
-    <h1>Weather Dashboard</h1>
+  <div class="wrap">
+    <header>
+      <form id="search-form" class="search">
+        <label for="city-input">Search city</label>
+        <input type="text" id="city-input" placeholder="Search a city" autocomplete="off" />
+        <button type="submit" class="btn btn-primary">Search</button>
+      </form>
 
-    <form id="search-form">
-      <label for="city-input">Search city</label>
-      <input
-        type="text"
-        id="city-input"
-        placeholder="e.g. Mumbai, London..."
-        autocomplete="off"
-      />
-      <button type="submit">Search</button>
-    </form>
+      <div class="seg" role="group" aria-label="Temperature unit">
+        <button type="button" id="unit-c" aria-pressed="true">°C</button>
+        <button type="button" id="unit-f" aria-pressed="false">°F</button>
+      </div>
 
-    <div class="header-actions">
-      <button type="button" id="unit-toggle">Switch to °F</button>
-      <button type="button" id="geo-button">📍 My Location</button>
-    </div>
-  </header>
+      <button type="button" id="geo-button" class="btn">📍 My Location</button>
+    </header>
 
-  <div id="recent-searches" aria-label="Recent searches"></div>
+    <div id="recent-searches" aria-label="Recent searches"></div>
 
-  <main>
+    <section id="status-section" aria-live="polite"></section>
 
-    <section id="status-section" aria-live="polite">
-      <!-- loading / error messages will appear here -->
+    <section id="current-weather" class="hero" hidden>
+      <!-- current weather injected here by JS -->
     </section>
 
-    <section id="current-weather" hidden>
-      <!-- current weather will be injected here by JS -->
-    </section>
-
-    <div id="hourly-strip" class="hourly-strip" hidden>
-      <!-- next-8-hours strip injected here by JS -->
-    </div>
-
-    <section id="forecast" hidden>
-      <h2>5-Day Forecast</h2>
-      <div id="forecast-grid">
-        <!-- forecast cards will be injected here by JS -->
+    <section id="details-sheet" class="sheet" hidden>
+      <div class="stats" id="stats-grid">
+        <!-- feels like / humidity / wind / sunset injected here by JS -->
+      </div>
+      <div id="hourly-strip" class="hourly">
+        <!-- next-8-hours injected here by JS -->
+      </div>
+      <div id="forecast-list" class="days">
+        <!-- 5-day forecast injected here by JS -->
       </div>
     </section>
+  </div>
 
-  </main>
-
-  <template id="forecast-card-template">
-    <div class="forecast-card">
-      <p class="forecast-day"></p>
-      <p class="forecast-icon"></p>
-      <p class="forecast-temp"></p>
+  <template id="forecast-row-template">
+    <div class="d">
+      <span class="d-day"></span>
+      <span class="d-icon"></span>
+      <div class="rw">
+        <span class="lo"></span>
+        <div class="range"><i></i></div>
+        <span class="hi"></span>
+      </div>
     </div>
   </template>
 
