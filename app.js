@@ -103,8 +103,11 @@ function drawSun() {
     skyCtx.restore();
   }
   skyCtx.restore();
-  // Note: no solid sun disc drawn here on purpose — the hero icon is the
-  // one explicit "sun," this background layer is ambient light only.
+
+  const body = skyCtx.createRadialGradient(cx, cy, 5, cx, cy, 60 * pulse);
+  body.addColorStop(0, "#fff6d6"); body.addColorStop(0.55, "#ffd27a"); body.addColorStop(1, "#f59a4b");
+  skyCtx.fillStyle = body;
+  skyCtx.beginPath(); skyCtx.arc(cx, cy, 60 * pulse, 0, Math.PI * 2); skyCtx.fill();
 }
 
 function drawCloudShape(c) {
@@ -260,7 +263,7 @@ function renderCurrentWeather(place, data) {
     </div>
     <div class="cw-orb" id="cw-orb">
       <div class="cw-orb-glow"></div>
-      ${ICONS[category]}
+      ${category === "clear" ? "" : ICONS[category]}
     </div>
   `;
 
