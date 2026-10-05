@@ -95,7 +95,7 @@ function drawSun() {
   skyCtx.save();
   skyCtx.translate(cx, cy);
   skyCtx.rotate(animTime * 0.0012);
-  skyCtx.strokeStyle = "rgba(255,227,163,0.35)";
+  skyCtx.strokeStyle = "rgba(255,227,163,0.3)";
   skyCtx.lineWidth = 2;
   for (let i = 0; i < 16; i++) {
     skyCtx.save(); skyCtx.rotate((Math.PI * 2 / 16) * i);
@@ -103,11 +103,8 @@ function drawSun() {
     skyCtx.restore();
   }
   skyCtx.restore();
-
-  const body = skyCtx.createRadialGradient(cx, cy, 5, cx, cy, 60 * pulse);
-  body.addColorStop(0, "#fff6d6"); body.addColorStop(0.55, "#ffd27a"); body.addColorStop(1, "#f59a4b");
-  skyCtx.fillStyle = body;
-  skyCtx.beginPath(); skyCtx.arc(cx, cy, 60 * pulse, 0, Math.PI * 2); skyCtx.fill();
+  // Note: no solid sun disc drawn here on purpose — the hero icon is the
+  // one explicit "sun," this background layer is ambient light only.
 }
 
 function drawCloudShape(c) {
